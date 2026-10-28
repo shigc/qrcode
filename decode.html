@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>二维码解码器 - 在线识别二维码内容 | QR Code Decoder</title>
+  <meta name="description" content="免费在线二维码解码器，支持上传图片或使用摄像头扫描二维码，快速解析内容。" />
+  <meta name="keywords" content="二维码解码,QR code decoder,扫码识别,二维码识别" />
+  <meta property="og:title" content="二维码解码器" />
+  <meta property="og:description" content="上传图片或摄像头扫描，快速解析二维码内容。" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="canonical" href="decode.html" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "QR Code Decoder",
+    "url": "/decode.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body data-page="decoder">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./" class="logo">
+        <span class="logo-icon">Q</span>
+        <span>QR Tool</span>
+      </a>
+      <nav class="main-nav">
+        <a href="./" data-i18n="nav.generator">生成器</a>
+        <a href="decode.html" class="active" data-i18n="nav.decoder">解码器</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <a href="contact.html" data-i18n="nav.contact">联系</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch">
+          <button class="lang-btn" type="button" aria-label="Language">
+            <span class="lang-name">简体中文</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button id="theme-toggle" class="icon-btn" type="button" title="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <h1 class="page-title" data-i18n="decode.title">二维码解码器</h1>
+      <p class="page-desc" data-i18n="decode.desc">上传图片或使用摄像头扫描二维码，快速解析内容。</p>
+
+      <div class="decoder-layout">
+        <div class="card">
+          <div class="card-body">
+            <div class="custom-title" data-i18n="decode.uploadTitle">上传图片解码</div>
+            <div class="upload-area" id="decode-upload">
+              <input type="file" id="decode-file" accept="image/*" hidden />
+              <p data-i18n="decode.uploadHint">点击或拖拽图片到此处</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="custom-title" data-i18n="decode.cameraTitle">摄像头扫描</div>
+            <div class="camera-box">
+              <video id="camera-video" playsinline muted></video>
+              <div class="scan-frame"></div>
+            </div>
+            <canvas id="camera-canvas" class="hidden"></canvas>
+            <button class="btn btn-primary btn-block mt-16" id="btn-start-camera" type="button" data-i18n="btn.startCamera">开启摄像头</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <div class="custom-title" data-i18n="decode.resultTitle">解码结果</div>
+            <div class="decode-result" id="decode-result" data-placeholder="解码结果将显示在这里..."></div>
+            <button class="btn btn-secondary btn-block mt-16" id="btn-copy-result" type="button" data-i18n="decode.copy">复制结果</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span>&copy; <span id="year"></span> QR Tool. <span data-i18n="footer.rights">保留所有权利。</span></span>
+        <div class="footer-links">
+          <a href="about.html" data-i18n="nav.about">关于</a>
+          <a href="contact.html" data-i18n="nav.contact">联系</a>
+          <a href="privacy.html" data-i18n="footer.privacy">隐私政策</a>
+          <a href="about.html#terms" data-i18n="footer.terms">服务条款</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/lib/jsQR.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/qr-decoder.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

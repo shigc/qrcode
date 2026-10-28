@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>二维码生成器 - 免费在线生成二维码 | QR Code Generator</title>
+  <meta name="description" content="免费在线二维码生成器，支持文本、URL、WiFi、名片、邮件等多种类型，自定义颜色、点型、Logo，一键下载 PNG/SVG。" />
+  <meta name="keywords" content="二维码生成器,QR code generator,免费二维码,WiFi二维码,名片二维码,二维码下载" />
+  <meta name="author" content="QR Tool" />
+  <meta property="og:title" content="免费二维码生成器" />
+  <meta property="og:description" content="在线生成各类二维码，支持自定义样式与 Logo，免费下载 PNG/SVG。" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.svg" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="canonical" href="./" />
+  <link rel="stylesheet" href="assets/css/main.css?v=20260913c" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "QR Code Generator",
+    "url": "/",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body data-page="generator">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="./" class="logo">
+        <span class="logo-icon">Q</span>
+        <span>QR Tool</span>
+      </a>
+      <nav class="main-nav">
+        <a href="./" class="active" data-i18n="nav.generator">生成器</a>
+        <a href="decode.html" data-i18n="nav.decoder">解码器</a>
+        <a href="about.html" data-i18n="nav.about">关于</a>
+        <a href="contact.html" data-i18n="nav.contact">联系</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang-switch">
+          <button class="lang-btn" type="button" aria-label="Language">
+            <span class="lang-name">简体中文</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="lang-menu"></div>
+        </div>
+        <button id="theme-toggle" class="icon-btn" type="button" data-i18n-title="theme.toggle" title="切换主题">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <div class="container">
+      <!-- Header banner ad -->
+
+      <h1 class="page-title" data-i18n="gen.title">二维码生成器</h1>
+      <p class="page-desc" data-i18n="gen.desc">免费在线生成各类二维码，支持自定义样式、Logo 嵌入，一键下载 PNG / SVG。</p>
+
+      <div class="generator-layout">
+        <!-- Left: forms + customization -->
+        <div>
+          <div class="card">
+            <div class="card-body">
+              <!-- Type tabs -->
+              <div class="type-tabs">
+                <button class="type-tab active" data-type="text" data-i18n="type.text">文本 / URL</button>
+                <button class="type-tab" data-type="wifi" data-i18n="type.wifi">WiFi</button>
+                <button class="type-tab" data-type="vcard" data-i18n="type.vcard">名片</button>
+                <button class="type-tab" data-type="email" data-i18n="type.email">邮件</button>
+                <button class="type-tab" data-type="sms" data-i18n="type.sms">短信</button>
+                <button class="type-tab" data-type="phone" data-i18n="type.phone">电话</button>
+                <button class="type-tab" data-type="location" data-i18n="type.location">位置</button>
+                <button class="type-tab" data-type="event" data-i18n="type.event">日程</button>
+              </div>
+
+              <!-- Text form -->
+              <div id="form-text" class="type-form active">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.content">内容</label>
+                  <textarea class="form-textarea" data-field="content" data-i18n-ph="label.content.ph" placeholder="输入文本或网址，例如 https://example.com"></textarea>
+                </div>
+              </div>
+
+              <!-- WiFi form -->
+              <div id="form-wifi" class="type-form hidden">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.ssid">WiFi 名称 (SSID)</label>
+                  <input class="form-input" data-field="ssid" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.password">密码</label>
+                    <input class="form-input" type="password" data-field="password" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.encryption">加密方式</label>
+                    <select class="form-select" data-field="encryption">
+                      <option value="WPA" data-i18n="enc.wpa">WPA / WPA2</option>
+                      <option value="WEP" data-i18n="enc.wep">WEP</option>
+                      <option value="nopass" data-i18n="enc.nopass">无密码</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="toggle-row">
+                  <label data-i18n="label.hidden">隐藏网络</label>
+                  <label class="switch">
+                    <input type="checkbox" data-field="hidden" />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- vCard form -->
+              <div id="form-vcard" class="type-form hidden">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.name">姓名</label>
+                    <input class="form-input" data-field="name" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.phone">电话</label>
+                    <input class="form-input" data-field="phone" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.email">邮箱</label>
+                    <input class="form-input" type="email" data-field="email" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.company">公司</label>
+                    <input class="form-input" data-field="company" />
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.title">职位</label>
+                    <input class="form-input" data-field="title" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.website">网址</label>
+                    <input class="form-input" data-field="website" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.address">地址</label>
+                  <input class="form-input" data-field="address" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.note">备注</label>
+                  <textarea class="form-textarea" data-field="note"></textarea>
+                </div>
+              </div>
+
+              <!-- Email form -->
+              <div id="form-email" class="type-form hidden">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.to">收件人</label>
+                  <input class="form-input" type="email" data-field="to" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.subject">主题</label>
+                  <input class="form-input" data-field="subject" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.body">正文</label>
+                  <textarea class="form-textarea" data-field="body"></textarea>
+                </div>
+              </div>
+
+              <!-- SMS form -->
+              <div id="form-sms" class="type-form hidden">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.number">号码</label>
+                  <input class="form-input" data-field="number" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.message">内容</label>
+                  <textarea class="form-textarea" data-field="message"></textarea>
+                </div>
+              </div>
+
+              <!-- Phone form -->
+              <div id="form-phone" class="type-form hidden">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.number">号码</label>
+                  <input class="form-input" data-field="number" />
+                </div>
+              </div>
+
+              <!-- Location form -->
+              <div id="form-location" class="type-form hidden">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.lat">纬度</label>
+                    <input class="form-input" data-field="lat" placeholder="39.9042" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.lng">经度</label>
+                    <input class="form-input" data-field="lng" placeholder="116.4074" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Event form -->
+              <div id="form-event" class="type-form hidden">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.eventTitle">事件标题</label>
+                  <input class="form-input" data-field="eventTitle" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.location">地点</label>
+                  <input class="form-input" data-field="location" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.start">开始时间</label>
+                    <input class="form-input" type="datetime-local" data-field="start" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" data-i18n="label.end">结束时间</label>
+                    <input class="form-input" type="datetime-local" data-field="end" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="label.description">描述</label>
+                  <textarea class="form-textarea" data-field="description"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content native ad removed per user request -->
+
+          <!-- Customization card -->
+          <div class="card">
+            <div class="card-body">
+              <div class="custom-title" data-i18n="custom.title">样式自定义</div>
+
+              <div class="custom-grid">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="custom.size">尺寸</label>
+                  <div class="range-row">
+                    <input type="range" id="opt-size" min="128" max="1024" step="32" value="320" />
+                    <span class="range-val" id="val-size">320px</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="custom.margin">边距</label>
+                  <div class="range-row">
+                    <input type="range" id="opt-margin" min="0" max="10" step="1" value="2" />
+                    <span class="range-val" id="val-margin">2</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="custom.ecc">容错率</label>
+                <select class="form-select" id="opt-ecc">
+                  <option value="L">L (7%)</option>
+                  <option value="M" selected>M (15%)</option>
+                  <option value="Q">Q (25%)</option>
+                  <option value="H">H (30%)</option>
+                </select>
+              </div>
+
+              <div class="custom-grid">
+                <div class="form-group">
+                  <label class="form-label" data-i18n="custom.fg">前景色</label>
+                  <div class="color-row">
+                    <input type="color" id="opt-fg" value="#1f2329" />
+                    <input type="text" class="form-input" id="opt-fg-text" value="#1f2329" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" data-i18n="custom.bg">背景色</label>
+                  <div class="color-row">
+                    <input type="color" id="opt-bg" value="#ffffff" />
+                    <input type="text" class="form-input" id="opt-bg-text" value="#ffffff" />
+                  </div>
+                  <div class="toggle-row">
+                    <label data-i18n="custom.transparent">透明背景</label>
+                    <label class="switch">
+                      <input type="checkbox" id="opt-bg-trans" />
+                      <span class="switch-slider"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="custom.dots">点型</label>
+                <div class="pill-group dots-pills">
+                  <button class="pill active" data-type="square" data-i18n="dots.square">方块</button>
+                  <button class="pill" data-type="dots" data-i18n="dots.dots">圆点</button>
+                  <button class="pill" data-type="rounded" data-i18n="dots.rounded">圆角</button>
+                  <button class="pill" data-type="extra-rounded" data-i18n="dots.extraRounded">大圆角</button>
+                  <button class="pill" data-type="classy" data-i18n="dots.classy">优雅</button>
+                  <button class="pill" data-type="classy-rounded" data-i18n="dots.classyRounded">优雅圆角</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="custom.corners">定位角</label>
+                <div class="pill-group corner-pills">
+                  <button class="pill active" data-type="square" data-i18n="corner.square">方块</button>
+                  <button class="pill" data-type="dot" data-i18n="corner.dot">圆点</button>
+                  <button class="pill" data-type="extra-rounded" data-i18n="corner.extraRounded">圆角</button>
+                  <button class="pill" data-type="classy" data-i18n="corner.classy">优雅</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-i18n="custom.logo">Logo</label>
+                <div class="upload-area" id="logo-upload" onclick="document.getElementById('logo-input').click()">
+                  <input type="file" id="logo-input" accept="image/*" hidden />
+                  <p id="logo-upload-text" data-i18n="custom.uploadLogo">点击上传 Logo</p>
+                  <img id="logo-preview" class="hidden" />
+                </div>
+                <div class="toggle-row mt-16" id="logo-embed-row">
+                  <label data-i18n="custom.logoEmbed">Logo 嵌入模式</label>
+                  <label class="switch">
+                    <input type="checkbox" id="opt-logo-embed" />
+                    <span class="switch-slider"></span>
+                  </label>
+                </div>
+                <div class="range-row mt-16" id="logo-size-row">
+                  <span class="form-label" data-i18n="custom.logoSize">Logo 大小</span>
+                  <input type="range" id="opt-logo-size" min="15" max="60" step="1" value="30" />
+                  <span class="range-val" id="val-logo-size">30%</span>
+                </div>
+                <div class="range-row mt-16 hidden" id="logo-opacity-row">
+                  <span class="form-label" data-i18n="custom.logoOpacity">背景不透明度</span>
+                  <input type="range" id="opt-logo-opacity" min="10" max="100" step="5" value="90" />
+                  <span class="range-val" id="val-logo-opacity">90%</span>
+                </div>
+                <p class="form-hint" data-i18n="custom.logoEmbedHint">将 Logo 作为半透明背景铺满整个二维码，自动启用最高容错率以保证可扫描</p>
+                <p class="form-hint" data-i18n="custom.logoEmbedBgWarn">嵌入模式下二维码背景色设置将失效，背景由 Logo 透明度决定</p>
+                <button class="btn btn-secondary btn-block mt-16 hidden" id="remove-logo" type="button" data-i18n="custom.removeLogo">移除 Logo</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar ad removed per user request -->
+        </div>
+
+        <!-- Right: preview only -->
+        <div>
+          <div class="card preview-card">
+            <div class="card-header" data-i18n="preview.title">预览</div>
+            <div class="card-body">
+              <div class="preview-box">
+                <div id="qr-preview">
+                  <img id="qr-logo-bg" alt="" />
+                  <div id="qr-canvas"></div>
+                </div>
+                <div class="action-btns">
+                  <button class="btn btn-primary" id="btn-png" type="button" data-i18n="btn.downloadPng">下载 PNG</button>
+                  <button class="btn btn-secondary" id="btn-svg" type="button" data-i18n="btn.downloadSvg">下载 SVG</button>
+                  <button class="btn btn-secondary btn-block" id="btn-copy" type="button" data-i18n="btn.copy">复制图片</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span>&copy; <span id="year"></span> QR Tool. <span data-i18n="footer.rights">保留所有权利。</span></span>
+        <div class="footer-links">
+          <a href="about.html" data-i18n="nav.about">关于</a>
+          <a href="contact.html" data-i18n="nav.contact">联系</a>
+          <a href="privacy.html" data-i18n="footer.privacy">隐私政策</a>
+          <a href="about.html#terms" data-i18n="footer.terms">服务条款</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script src="assets/lib/qr-code-styling.js"></script>
+  <script src="assets/js/i18n.js?v=20260913c"></script>
+  <script src="assets/js/theme.js?v=20260913c"></script>
+  <script src="assets/js/qr-generator.js?v=20260913c"></script>
+  <script src="assets/js/main.js?v=20260913c"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build / cache
+dist/
+.wrangler/
+.trae/
+
+# Local environment / secrets
+.env
+.env.*
+*.local
+wrangler.toml
+
+# Local-only agent instructions (contains private deployment notes)
+AGENTS.md
+
+# Temporary review / test artifacts
+review-results.json
+
+# Logs
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo

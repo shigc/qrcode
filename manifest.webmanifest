@@ -1,0 +1,16 @@
+{
+  "name": "QR Code Generator",
+  "short_name": "QR Tool",
+  "description": "Free online QR code generator and decoder",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f7cff",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

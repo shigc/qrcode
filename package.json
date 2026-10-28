@@ -1,0 +1,37 @@
+{
+  "name": "qr-code-generator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A free, privacy-friendly multilingual QR code generator and decoder built with vanilla HTML, CSS and JavaScript.",
+  "keywords": [
+    "qrcode",
+    "qr-code",
+    "qr-generator",
+    "qr-decoder",
+    "javascript",
+    "static-site",
+    "i18n",
+    "cloudflare-pages"
+  ],
+  "homepage": "https://qrcode.shigc.top/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shigc/qrcode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shigc/qrcode/issues"
+  },
+  "author": "shigc",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "npx --yes serve . -l 8080",
+    "build": "node build.mjs",
+    "deploy": "npm run build && npx wrangler pages deploy dist"
+  },
+  "devDependencies": {
+    "javascript-obfuscator": "^5.7.0"
+  }
+}
